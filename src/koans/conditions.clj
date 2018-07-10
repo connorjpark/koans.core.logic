@@ -14,8 +14,8 @@
  "When asked a single question, we shall receive a single answer."
  (= (run 1 [q]
       (conde
-       [(== q :apple)]
-       [(== q :orange)])) '(:apple))
+       [(== q :orange)]
+       [(== q :apple)])) '(:orange))
 
  "Failures do not matter, but succeess always does!"
  (= (run* [q]

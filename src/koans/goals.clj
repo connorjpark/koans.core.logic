@@ -58,3 +58,49 @@ particular use of membero?"
        (membero 'cat q)))
     (lcons '_0 (lcons 'cat '_1)))
  )
+
+
+"Apple teaser riddle"
+
+
+(def n 23)
+#spy/d (even? n)
+
+#spy/d (+ (rand-int 11) 10)
+
+#spy/d (run* [q]
+         (== q 1))
+
+#spy/d (run* [q]
+         (let [non-primes '(4 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27) odds (filter odd? (range 3 28))]
+           (fresh [x y z t]
+             (== x 5)
+             (membero y (range 1 10))
+             (membero z (range 1 10))
+             (!= x y)
+             (!= y z)
+             (!= x z)
+             (membero t non-primes)
+             (membero t odds)
+             (project [x y z] (== t (+ x y z)))
+             (== q [:you x :pip y :blossom z :total t]))))
+
+
+#spy/d (run* [q]
+         (fresh [x y z]
+           (== x 1)
+           (== y 2)
+           (project [x y] (== z (+ x y)))
+           (== q z)))
+
+
+#spy/d (run* [q]
+         (fresh [x1 x2 x3 total]
+           (!= x1 x2)
+           (!= x2 x3)
+           (!= x1 x3)
+           (== x1 5)
+           (== x2 (rand-nth (remove #(= x1 %) (range 1 10))))
+           (== x3 (rand-nth (remove #(= x2 %) (remove #(= x1 %) (range 1 10)))))
+           (== total (filter odd? (range 8 25)))
+           (== q total)))
