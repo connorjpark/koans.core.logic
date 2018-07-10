@@ -71,19 +71,21 @@ particular use of membero?"
 #spy/d (run* [q]
          (== q 1))
 
-#spy/d (run* [q]
-         (let [non-primes '(4 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27) odds (filter odd? (range 3 28))]
-           (fresh [x y z t]
-             (== x 5)
-             (membero y (range 1 10))
-             (membero z (range 1 10))
-             (!= x y)
-             (!= y z)
-             (!= x z)
-             (membero t non-primes)
-             (membero t odds)
-             (project [x y z] (== t (+ x y z)))
-             (== q [:you x :pip y :blossom z :total t]))))
+#spy/d (time
+        (run* [q]
+          (let [non-primes '(4 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27) odds (filter odd? (range 3 28))]
+            (fresh [x y z t]
+              (== x 5)
+              ;;(== y 7)
+              (membero y (range 1 10))
+              (membero z (range 1 10))
+              (!= x y)
+              (!= y z)
+              (!= x z)
+              (membero t non-primes)
+              (membero t odds)
+              (project [x y z] (== t (+ x y z)))
+              (== q [:you x :pip y :blossom z :total t])))))
 
 
 #spy/d (run* [q]
